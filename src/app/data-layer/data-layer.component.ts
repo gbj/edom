@@ -78,7 +78,7 @@ export class DataLayerComponent implements OnInit, OnChanges {
 						fillOpacity: 0.5 * opacityMod,
 						strokeWeight: 1,
 						strokeOpacity: 0.2,
-						icon: "/assets/icon_"+o[feature.getProperty(p)]+"_dot.png",
+						icon: "/edom/assets/icon_"+o[feature.getProperty(p)]+"_dot.png",
 						visible
 					}
 				});
