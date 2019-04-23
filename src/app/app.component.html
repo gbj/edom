@@ -1,0 +1,42 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-9">
+			<div id="map"></div>
+			<app-kml-layer [map]="map" url="https://www.dropbox.com/s/7osqeukgqvtk36p/MBTAsystem.kml?dl=1" [show]="options.transit_lines"></app-kml-layer>
+			<app-age-map [map]="map" data="/assets/ACS_17_5YR_S0101_EasternMA_20s30sOnly.csv" geography="/assets/edom.geojson" [ageRange]="options.ageRange" [opacity]="options.ageMapOpacity" (click)="handleClick($event)"></app-age-map>
+			<app-data-layer [map]="map" url="/assets/20s30sisos.geojson" styleProperty="category" [styleOptions]="{'Parish-based': 'red', 'Independent': 'blue', 'Campus': 'green' }" [show]="options.isochrones_parish" filterProperty="category" [filterValue]="selectedIsochrones" [opacity]="options.isosOpacity" (click)="handleClick($event)"></app-data-layer>
+			<app-data-layer [map]="map" url="/assets/20s30spts.geojson" [show]="options.points" styleProperty="category" [styleOptions]="{'Parish-based': 'red', 'Independent': 'blue', 'Campus': 'green' }" filterProperty="category" [filterValue]="selectedPoints" [opacity]="options.isosOpacity" (click)="handleClick($event)"></app-data-layer>
+		</div>
+		<div class="col-md-3">
+			<fieldset>
+				<legend>Age</legend>
+				<input type="radio" id="age20_29" [(ngModel)]="options.ageRange" value="age20_29"><label for="age20_29">20-29</label>
+				<input type="radio" id="age20_34" [(ngModel)]="options.ageRange" value="age20_34"><label for="age20_34">20-34</label>
+				<input type="radio" id="age20_39" [(ngModel)]="options.ageRange" value="age20_39"><label for="age20_29">20-39</label>
+				<input type="range" id="ageMapOpacity" [(ngModel)]="options.ageMapOpacity" value="1" min="0" max="2" step="0.25"><label for="ageMapOpacity">Opacity</label>
+			</fieldset>
+			<fieldset>
+				<legend>Ministries</legend>
+				<label *ngFor="let option of categories">
+		        <input type="checkbox"
+		               name="options_points"
+		               value="{{option.value}}"
+		               [(ngModel)]="option.points"/>
+		        {{option.name}}
+		    </label>
+			</fieldset>
+			<fieldset>
+				<legend>Travel Radius (25 minutes on public transit)</legend>
+				<label *ngFor="let option of categories">
+				            <input type="checkbox"
+				                   name="options_isochrones"
+				                   value="{{option.value}}"
+				                   [(ngModel)]="option.isochrones"/>
+				            {{option.name}}
+				        </label>
+								<input type="range" id="isosOpacity" [(ngModel)]="options.isosOpacity" value="1" min="0" max="2" step="0.25"><label for="isosOpacity">Opacity</label>
+					
+			</fieldset>
+		</div>
+	</div>
+</div>
