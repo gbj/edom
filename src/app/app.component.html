@@ -3,9 +3,9 @@
 		<div class="col-md-9">
 			<div id="map"></div>
 			<app-kml-layer [map]="map" url="https://www.dropbox.com/s/7osqeukgqvtk36p/MBTAsystem.kml?dl=1" [show]="options.transit_lines"></app-kml-layer>
-			<app-age-map [map]="map" data="/assets/ACS_17_5YR_S0101_EasternMA_20s30sOnly.csv" geography="/assets/edom.geojson" [ageRange]="options.ageRange" [opacity]="options.ageMapOpacity" (click)="handleClick($event)"></app-age-map>
-			<app-data-layer [map]="map" url="/assets/20s30sisos.geojson" styleProperty="category" [styleOptions]="{'Parish-based': 'red', 'Independent': 'blue', 'Campus': 'green' }" [show]="options.isochrones_parish" filterProperty="category" [filterValue]="selectedIsochrones" [opacity]="options.isosOpacity" (click)="handleClick($event)"></app-data-layer>
-			<app-data-layer [map]="map" url="/assets/20s30spts.geojson" [show]="options.points" styleProperty="category" [styleOptions]="{'Parish-based': 'red', 'Independent': 'blue', 'Campus': 'green' }" filterProperty="category" [filterValue]="selectedPoints" [opacity]="options.isosOpacity" (click)="handleClick($event)"></app-data-layer>
+			<app-age-map [map]="map" data="assets/ACS_17_5YR_S0101_EasternMA_20s30sOnly.csv" geography="assets/edom.geojson" [ageRange]="options.ageRange" [opacity]="options.ageMapOpacity" (click)="handleClick($event)"></app-age-map>
+			<app-data-layer [map]="map" url="assets/20s30sisos.geojson" styleProperty="category" [styleOptions]="{'Parish-based': 'red', 'Independent': 'blue', 'Campus': 'green' }" [show]="options.isochrones_parish" filterProperty="category" [filterValue]="selectedIsochrones" [opacity]="options.isosOpacity" (click)="handleClick($event)"></app-data-layer>
+			<app-data-layer [map]="map" url="assets/20s30spts.geojson" [show]="options.points" styleProperty="category" [styleOptions]="{'Parish-based': 'red', 'Independent': 'blue', 'Campus': 'green' }" filterProperty="category" [filterValue]="selectedPoints" [opacity]="options.isosOpacity" (click)="handleClick($event)"></app-data-layer>
 		</div>
 		<div class="col-md-3">
 			<fieldset>
